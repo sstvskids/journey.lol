@@ -37,7 +37,7 @@ end
 
 if shared.uninject then
     setclipboard('https://github.com/sstvskids/journey.lol')
-    return shared.Notifications.NewNotification(lplr, 'Documentation on how to config has been copied to your clipboard', 4, Color3.fromRGB(255,255,255), 'Yay!')
+    return shared.notifications.NewNotification(lplr, 'Documentation on how to config has been copied to your clipboard', 4, Color3.fromRGB(255,255,255), 'Yay!')
 end
 
 for _, v in {'journey.lol'} do
