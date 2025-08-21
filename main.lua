@@ -63,8 +63,6 @@ shared.uninject = function()
     shared.disconnect()
 
     shared.disconnect = nil
-    shared.uninject = nil
-
     Notifications.NewNotification(lplr, 'Uninjected :(', 4, Color3.fromRGB(255,255,255), 'Yay!')
 end
 
