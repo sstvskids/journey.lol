@@ -21,6 +21,8 @@ local function getURL(url)
 end
 
 local Notifications = loadstring(getURL('notif.lua'))()
+shared.notifications = Notifications
+
 local savetog, lastsave = true, os.clock()
 
 if not shared.connections or not type(shared.connections) == 'table' then
