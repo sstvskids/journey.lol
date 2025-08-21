@@ -1,22 +1,32 @@
 --[[
-
-    journey.lol
-    by @stav
-
-    w-w-wait? a gui-less script!?!
+    to get the latest updates: always come here
 ]]
 
 repeat task.wait() until game:isLoaded()
 
-if not shared.Settings then return end
 if shared.uninject then
     shared.uninject()
 end
 
-for _, v in {'journey.lol'} do
-    if not isfolder(v) then
-        makefolder(v)
-    end
+-- adjust ur config here
+shared.Settings = loadstring(readfile('journey.lol/cfg.lua'))() or {
+    DoubleXP = {
+        Enabled = true,
+        Config = {},
+        Func = ''
+    },
+    Aura = {
+        Enabled = true,
+        Config = {
+            Range = 15,
+            TPPlr = false
+        },
+        Func = ''
+    }
+}
+
+local function getURL(url)
+	return game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/'..httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/sstvskids/journey.lol/commits'))[1].sha..'/'..scripturl, true)
 end
 
-return loadstring(game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/refs/heads/main/main.lua'))()
+return loadstring(getURL('main.lua'))()

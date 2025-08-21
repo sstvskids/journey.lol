@@ -15,7 +15,11 @@ local runService = cloneref(game:GetService('RunService'))
 local playersService = cloneref(game:GetService('Players'))
 local lplr = playersService.LocalPlayer
 
-local Notifications = loadstring(game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/refs/heads/main/notif.lua'))()
+local function getURL(url)
+	return game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/'..httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/sstvskids/journey.lol/commits'))[1].sha..'/'..scripturl, true)
+end
+
+local Notifications = loadstring(getURL('notif.lua'))()
 local savetog, lastsave = true, os.clock()
 
 if not shared.connections or not type(shared.connections) == 'table' then
@@ -38,6 +42,7 @@ local function getPart(v)
         return v.Character.PrimaryPart
     end
 end
+
 
 -- Core Functions
 shared.disconnect = function()

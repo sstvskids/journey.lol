@@ -15,6 +15,7 @@ local tweenService = cloneref(game:GetService('TweenService'))
 local playersService = cloneref(game:GetService('Players'))
 local lplr = playersService.LocalPlayer
 
+-- i rewrote for fun just so it didnt look like doo doo
 return require(replicatedStorage.GameModules.NotifyModule) or {
     NewNotification = function(plr, txt, dur, color, sound)
         local plrUI = plr.PlayerGui:WaitForChild('NotificationInterface')
