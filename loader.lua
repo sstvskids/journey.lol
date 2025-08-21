@@ -19,4 +19,4 @@ for _, v in {'journey.lol'} do
     end
 end
 
-return ''
+return loadstring(game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/refs/heads/main/main.lua'))()

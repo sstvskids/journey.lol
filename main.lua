@@ -15,7 +15,7 @@ local runService = cloneref(game:GetService('RunService'))
 local playersService = cloneref(game:GetService('Players'))
 local lplr = playersService.LocalPlayer
 
-local Notifications = ''
+local Notifications = loadstring(game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/refs/heads/main/notif.lua'))()
 local savetog, lastsave = true, os.clock()
 
 if not shared.connections or not type(shared.connections) == 'table' then
@@ -64,6 +64,8 @@ shared.uninject = function()
 
     shared.disconnect = nil
     shared.uninject = nil
+
+    Notifications.NewNotification(lplr, 'Uninjected :(', 4, Color3.fromRGB(255,255,255), 'Yay!')
 end
 
 -- Features
