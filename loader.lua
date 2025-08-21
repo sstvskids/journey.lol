@@ -9,7 +9,7 @@ if shared.uninject then
 end
 
 -- adjust ur config here
-shared.Settings = loadstring(readfile('journey.lol/cfg.lua'))() or {
+shared.Settings = isfile('journey.lol/cfg.lua') and loadstring(readfile('journey.lol/cfg.lua'))() or {
     DoubleXP = {
         Enabled = true,
         Config = {},
@@ -24,6 +24,11 @@ shared.Settings = loadstring(readfile('journey.lol/cfg.lua'))() or {
         Func = ''
     }
 }
+
+local cloneref = cloneref or function(obj)
+    return obj
+end
+local httpService = cloneref(game:GetService('HttpService'))
 
 for _, v in {'journey.lol'} do
     if not isfolder(v) then
