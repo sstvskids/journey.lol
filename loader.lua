@@ -8,7 +8,7 @@
 
 repeat task.wait() until game:isLoaded()
 
-if not shared.Config then return end
+if not shared.Settings then return end
 if shared.uninject then
     shared.uninject()
 end
