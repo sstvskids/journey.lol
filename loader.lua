@@ -5,11 +5,16 @@
 repeat task.wait() until game:isLoaded()
 
 if shared.uninject then
-    shared.uninject()
+    warn('reinject ur script pls')
+    return shared.uninject()
 end
 
--- adjust ur config here
-shared.Settings = isfile('journey.lol/cfg.lua') and loadstring(readfile('journey.lol/cfg.lua'))() or {
+local cloneref = cloneref or function(obj)
+    return obj
+end
+local httpService = cloneref(game:GetService('HttpService'))
+
+shared.Settings = isfile('journey.lol/cfg.lua') and loadstring(httpService:JSONDecode(readfile('journey.lol/cfg.lua')))() or {
     DoubleXP = {
         Enabled = true,
         Config = {},
@@ -24,11 +29,6 @@ shared.Settings = isfile('journey.lol/cfg.lua') and loadstring(readfile('journey
         Func = ''
     }
 }
-
-local cloneref = cloneref or function(obj)
-    return obj
-end
-local httpService = cloneref(game:GetService('HttpService'))
 
 for _, v in {'journey.lol'} do
     if not isfolder(v) then

@@ -30,7 +30,7 @@ end
 local function save()
     if savetog == true and os.clock() - lastsave >= 5 then
         lastsave = os.clock()
-        writefile('journey.lol/config.lua', shared.Settings)
+        writefile('journey.lol/config.lua', httpService:JSONEncode(shared.Settings))
     end
 end
 
