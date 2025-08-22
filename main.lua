@@ -178,7 +178,7 @@ run(function()
             if callback then
                 interface.connections.Grace = runService.PreSimulation:Connect(function()
                     if isAlive(lplr) then
-                        getPart(lplr).CFrame = workspace.JacobLadder.PhysicalSetup.Stand.CFrame + Vector3.new(0, offset, 0)
+                        getPart(lplr).CFrame = workspace.JacobLadder.PhysicalSetup.Stand.CFrame + Vector3.new(0, 3.25, 0)
                     end
                 end)
             else
