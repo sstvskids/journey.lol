@@ -265,13 +265,14 @@ function Library:new()
 	local tabsCorner = Instance.new("UICorner")
 	tabsCorner.Parent = tabs
 
+    if UserInputService.TouchEnabled then
         local mobile_button = Instance.new("TextButton")
         mobile_button.Name = "Mobile"
         mobile_button.BackgroundColor3 = Color3.fromRGB(27, 28, 33)
         mobile_button.BorderColor3 = Color3.fromRGB(0, 0, 0)
         mobile_button.BorderSizePixel = 0
         mobile_button.Position = UDim2.new(0.0210955422, 0, 0.91790241, 0)
-        --mobile_button.Size = UDim2.new(0, 122, 0, 38)
+        mobile_button.Size = UDim2.new(0, 122, 0, 38)
         mobile_button.AutoButtonColor = false
         mobile_button.Modal = true
         mobile_button.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
@@ -279,16 +280,6 @@ function Library:new()
         mobile_button.TextColor3 = Color3.fromRGB(0, 0, 0)
         mobile_button.TextSize = 14.000
         mobile_button.Parent = container
-
-        local MobileScale, mscale = Instance.new("UIScale")
-        MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
-        mscale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
-        MobileScale.Parent = mobile_button
-        mobile_button.Size = UDim2.fromScale(122 / workspace.CurrentCamera.ViewportSize.X, 38 / workspace.CurrentCamera.ViewportSize.Y)
-
-        workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
-            MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
-        end)
 
         local UICorner = Instance.new("UICorner")
         UICorner.CornerRadius = UDim.new(0, 13)
@@ -303,20 +294,10 @@ function Library:new()
         shadowMobile.BorderColor3 = Color3.fromRGB(0, 0, 0)
         shadowMobile.BorderSizePixel = 0
         shadowMobile.Position = UDim2.new(0.5, 0, 0.5, 0)
-        --shadowMobile.Size = UDim2.new(0, 144, 0, 58)
+        shadowMobile.Size = UDim2.new(0, 144, 0, 58)
         shadowMobile.ZIndex = 0
         shadowMobile.Image = "rbxassetid://17183270335"
         shadowMobile.ImageTransparency = 0.200
-
-        local MobileScale2, mscale2 = Instance.new("UIScale")
-        MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
-        mscale2 = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
-        MobileScale2.Parent = shadowMobile
-        shadowMobile.Size = UDim2.fromScale(122 / workspace.CurrentCamera.ViewportSize.X, 38 / workspace.CurrentCamera.ViewportSize.Y)
-
-        workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
-            MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
-        end)
 
         local State = Instance.new("TextLabel")
         State.Name = "State"
@@ -351,6 +332,7 @@ function Library:new()
         mobile_button.MouseButton1Click:Connect(function()
             Library.visible(container)
         end)
+    end
 
     container.Container.InputBegan:Connect(function(input: InputObject)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
