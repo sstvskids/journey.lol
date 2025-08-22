@@ -33,12 +33,12 @@ local Library = {
 
 function Library:disconnect()
 	for _, value in Library.connections do
-		if type(Library.connections.value) ~= 'RBXScriptConnection' then
+		if type(value) ~= 'RBXScriptConnection' then
 			continue
 		end
 
-		Library.connections.value:Disconnect()
-		Library.connections.value = nil
+		value:Disconnect()
+		value = nil
 	end
 end
 
