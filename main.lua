@@ -36,12 +36,12 @@ local function isAlive(v)
 end
 
 local function getPart(v)
-    if isAlive(v) then
-        return v.Character.PrimaryPart
-    end
-
     if v:IsA('MeshPart') or v:IsA('BasePart') or v:IsA('Part') then
         return v.PrimaryPart
+    end
+    
+    if isAlive(v) then
+        return v.Character.PrimaryPart
     end
 end
 
