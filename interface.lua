@@ -35,7 +35,7 @@ function Library:disconnect()
 	for _, value in Library.connections do
         if value then
 		    value:Disconnect()
-		    Library.connections[i] = nil
+		    Library.connections[_] = nil
         end
 	end
 end
