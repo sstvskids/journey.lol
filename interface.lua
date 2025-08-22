@@ -176,30 +176,6 @@ function Library:new()
 	Container.ClipsDescendants = true
 	Container.Position = UDim2.new(0.5, 0, 0.5, 0)
 
-    -- temp gpt code cuz i know nothing about ui
-    -- Create UIScale
-local ContainerScale = Instance.new("UIScale")
-ContainerScale.Parent = Container
-
--- Function to update scale
-local function updateScale()
-    local screenSize = workspace.CurrentCamera.ViewportSize
-    -- Scale proportionally based on width
-    ContainerScale.Scale = Container.AbsoluteSize.X / screenSize.X
-    -- Optional: also scale height if you want to maintain aspect ratio
-    Container.Size = UDim2.fromScale(699 / screenSize.X, 426 / screenSize.Y)
-end
-
--- Initial setup
-updateScale()
-
--- Update when container size changes
-Container:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateScale)
-
--- Update when screen size changes
-workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(updateScale)
-
-
 	local ContainerCorner = Instance.new("UICorner")
 	ContainerCorner.CornerRadius = UDim.new(0, 20)
 	ContainerCorner.Parent = container.Container
@@ -223,8 +199,17 @@ workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(updateS
 	Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Logo.BorderSizePixel = 0
 	Logo.Position = UDim2.new(0.0387367606, 0, 0.5, 0)
-	Logo.Size = UDim2.new(0, 30, 0, 25)
 	Logo.Image = ""
+
+    local LogoScale, scale = Instance.new("UIScale")
+    LogoScale.Scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+	scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+	LogoScale.Parent = Logo
+    Logo.Size = UDim2.fromScale(30 / workspace.CurrentCamera.ViewportSize.X, 26 / workspace.CurrentCamera.ViewportSize.Y)
+
+    workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+        LogoScale.Scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+    end)
 	
 	local TextLabel = Instance.new("TextLabel")
 	TextLabel.Parent = Top
