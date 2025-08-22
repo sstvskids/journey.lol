@@ -183,7 +183,7 @@ function Library:new()
     Container.Size = UDim2.fromScale(699 / workspace.CurrentCamera.ViewportSize.X, 426 / workspace.CurrentCamera.ViewportSize.Y)
 
     Container:GetPropertyChangedSignal('AbsoluteSize'):Connect(function()
-        scaledUI.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        ContainerScale.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
     end)
 
 	local ContainerCorner = Instance.new("UICorner")
