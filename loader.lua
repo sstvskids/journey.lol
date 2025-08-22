@@ -8,6 +8,12 @@
 
 repeat task.wait() until game:isLoaded()
 
+local cloneref = cloneref or function(obj)
+    return obj
+end
+
+local httpService = cloneref(game:GetService('HttpService'))
+
 for _, v in {'journey.lol'} do
     if not isfolder(v) then
         makefolder(v)

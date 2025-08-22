@@ -62,7 +62,11 @@ run(function()
     local Range
     tabs.Combat.create_toggle({
         name = 'Aura',
+        flag = 'aura',
+
         section = 'left',
+        enabled = false,
+
         callback = function(callback)
             if callback then
                 interface.connections.Aura = runService.PreSimulation:Connect(function()
@@ -80,22 +84,32 @@ run(function()
                     end)
                 end)
             else
-                if shared.connections.Aura then
-                    shared.connections.Aura:Disconnect()
+                if interface.connections.Aura then
+                    interface.connections.Aura:Disconnect()
                 end
             end
         end
     })
     tabs.Combat.create_slider({
         name = 'Range',
+        flag = 'aurarange',
+
         section = 'left',
-        callback = function(callback)
-            Range = callback
+
+        value = 15,
+        minimum_value = 1,
+        maximum_value = 20,
+
+        callback = function(value)
+            Range = value
         end
     })
     tabs.Combat.create_toggle({
         name = 'TPAura',
+        flag = 'tpaura',
+
         section = 'left',
+        enabled = false,
         callback = function(callback)
             TPAura = callback
         end
@@ -110,11 +124,15 @@ run(function()
 
     tabs.Settings.create_toggle({
         name = 'Uninject',
+        flag = 'uninject',
+
         section = 'left',
+        enabled = false,
+
         callback = function(callback)
             if callback then
                 Notifications.NewNotification(lplr, 'uninjected', 2, Color3.fromRGB(255,255,255), 'Yay!')
-                interface:Uninject()
+                interface:uninject()
             end
         end
     })
