@@ -180,7 +180,7 @@ function Library:new()
     ContainerScale.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	ContainerScale.Parent = Container
-	Container.Size = UDim2.fromScale(1 / scale, 1 / scale)
+    Container.Size = UDim2.fromScale(699 / workspace.CurrentCamera.ViewportSize.X, 426 / workspace.CurrentCamera.ViewportSize.Y)
 
     Container:GetPropertyChangedSignal('AbsoluteSize'):Connect(function()
         scaledUI.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
