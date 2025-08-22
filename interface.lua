@@ -265,68 +265,83 @@ function Library:new()
 	local tabsCorner = Instance.new("UICorner")
 	tabsCorner.Parent = tabs
 
-    local mobile_button = Instance.new("TextButton")
-	mobile_button.Name = "Mobile"
-	mobile_button.BackgroundColor3 = Color3.fromRGB(27, 28, 33)
-	mobile_button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	mobile_button.BorderSizePixel = 0
-	mobile_button.Position = UDim2.new(0.0210955422, 0, 0.91790241, 0)
-	mobile_button.Size = UDim2.new(0, 122, 0, 38)
-	mobile_button.AutoButtonColor = false
-	mobile_button.Modal = true
-	mobile_button.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
-	mobile_button.Text = ""
-	mobile_button.TextColor3 = Color3.fromRGB(0, 0, 0)
-	mobile_button.TextSize = 14.000
-    mobile_button.Parent = container
+        local mobile_button = Instance.new("TextButton")
+        mobile_button.Name = "Mobile"
+        mobile_button.BackgroundColor3 = Color3.fromRGB(27, 28, 33)
+        mobile_button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        mobile_button.BorderSizePixel = 0
+        mobile_button.Position = UDim2.new(0.0210955422, 0, 0.91790241, 0)
+        mobile_button.Size = UDim2.new(0, 122, 0, 38)
+        mobile_button.AutoButtonColor = false
+        mobile_button.Modal = true
+        mobile_button.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
+        mobile_button.Text = ""
+        mobile_button.TextColor3 = Color3.fromRGB(0, 0, 0)
+        mobile_button.TextSize = 14.000
+        mobile_button.Parent = container
 
-	local UICorner = Instance.new("UICorner")
-	UICorner.CornerRadius = UDim.new(0, 13)
-	UICorner.Parent = mobile_button
+        local MobileScale, mscale = Instance.new("UIScale")
+        MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        mscale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        MobileScale.Parent = mobile_button
+        mobile_button.Size = UDim2.fromScale(122 / workspace.CurrentCamera.ViewportSize.X, 38 / workspace.CurrentCamera.ViewportSize.Y)
 
-	local shadowMobile = Instance.new("ImageLabel")
-	shadowMobile.Name = "Shadow"
-	shadowMobile.Parent = mobile_button
-	shadowMobile.AnchorPoint = Vector2.new(0.5, 0.5)
-	shadowMobile.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	shadowMobile.BackgroundTransparency = 1.000
-	shadowMobile.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	shadowMobile.BorderSizePixel = 0
-	shadowMobile.Position = UDim2.new(0.5, 0, 0.5, 0)
-	shadowMobile.Size = UDim2.new(0, 144, 0, 58)
-	shadowMobile.ZIndex = 0
-	shadowMobile.Image = "rbxassetid://17183270335"
-	shadowMobile.ImageTransparency = 0.200
+        workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+            MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        end)
 
-	local State = Instance.new("TextLabel")
-	State.Name = "State"
-	State.Parent = mobile_button
-	State.AnchorPoint = Vector2.new(0.5, 0.5)
-	State.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	State.BackgroundTransparency = 1.000
-	State.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	State.BorderSizePixel = 0
-	State.Position = UDim2.new(0.646000028, 10, 0.5, -1.25)
-	State.Size = UDim2.new(0, 64, 0, 15)
-	State.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
-	State.Text = "Open"
-	State.TextColor3 = Color3.fromRGB(255, 255, 255)
-	State.TextScaled = true
-	State.TextSize = 14.000
-	State.TextWrapped = true
-	State.TextXAlignment = Enum.TextXAlignment.Left
+        local UICorner = Instance.new("UICorner")
+        UICorner.CornerRadius = UDim.new(0, 13)
+        UICorner.Parent = mobile_button
 
-	local Icon = Instance.new("ImageLabel")
-	Icon.Name = "Icon"
-	Icon.Parent = mobile_button
-	Icon.AnchorPoint = Vector2.new(0.5, 0.5)
-	Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Icon.BackgroundTransparency = 1.000
-	Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Icon.BorderSizePixel = 0
-	Icon.Position = UDim2.new(0.268000007, 0, 0.5, 0)
-	Icon.Size = UDim2.new(0, 15, 0, 15)
-	Icon.Image = "rbxassetid://17183279677"
+        local shadowMobile = Instance.new("ImageLabel")
+        shadowMobile.Name = "Shadow"
+        shadowMobile.Parent = mobile_button
+        shadowMobile.AnchorPoint = Vector2.new(0.5, 0.5)
+        shadowMobile.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        shadowMobile.BackgroundTransparency = 1.000
+        shadowMobile.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        shadowMobile.BorderSizePixel = 0
+        shadowMobile.Position = UDim2.new(0.5, 0, 0.5, 0)
+        shadowMobile.Size = UDim2.new(0, 144, 0, 58)
+        shadowMobile.ZIndex = 0
+        shadowMobile.Image = "rbxassetid://17183270335"
+        shadowMobile.ImageTransparency = 0.200
+
+        local State = Instance.new("TextLabel")
+        State.Name = "State"
+        State.Parent = mobile_button
+        State.AnchorPoint = Vector2.new(0.5, 0.5)
+        State.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        State.BackgroundTransparency = 1.000
+        State.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        State.BorderSizePixel = 0
+        State.Position = UDim2.new(0.646000028, 10, 0.5, -1.25)
+        State.Size = UDim2.new(0, 64, 0, 15)
+        State.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
+        State.Text = "Open"
+        State.TextColor3 = Color3.fromRGB(255, 255, 255)
+        State.TextScaled = true
+        State.TextSize = 14.000
+        State.TextWrapped = true
+        State.TextXAlignment = Enum.TextXAlignment.Left
+
+        local Icon = Instance.new("ImageLabel")
+        Icon.Name = "Icon"
+        Icon.Parent = mobile_button
+        Icon.AnchorPoint = Vector2.new(0.5, 0.5)
+        Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Icon.BackgroundTransparency = 1.000
+        Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Icon.BorderSizePixel = 0
+        Icon.Position = UDim2.new(0.268000007, 0, 0.5, 0)
+        Icon.Size = UDim2.new(0, 15, 0, 15)
+        Icon.Image = "rbxassetid://17183279677"
+
+        mobile_button.MouseButton1Click:Connect(function()
+            Library.visible(container)
+        end)
+
     container.Container.InputBegan:Connect(function(input: InputObject)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             Library.dragging = true
@@ -357,13 +372,9 @@ function Library:new()
 
         if not Library.exist() then return end
 
-        if input.KeyCode == Enum.KeyCode.Insert then
+        if input.KeyCode == Enum.KeyCode.RightShift then
             Library.visible(container)
         end
-    end)
-
-    mobile_button.MouseButton1Click:Connect(function()
-        Library.visible(container)
     end)
 
     local Tab = {}
