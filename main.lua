@@ -289,4 +289,8 @@ end)
     end
 end]]
 
+for _, value in interface.connections do
+    print(_, value)
+end
+
 return Notifications.NewNotification(lplr, 'Script fully loaded :)', 4, Color3.fromRGB(255,255,255), 'Yay!')
