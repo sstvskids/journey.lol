@@ -1,10 +1,13 @@
 # journey.lol
 ## undetected script
 
-How to config:
+Script
 ```lua
-shared.Settings.DoubleXP.Enabled = true -- Toggle for the module; boolean (true/false)
-shared.Settings.Aura.Config.Range = 15 -- Range for the aura; number
+local function getURL(url)
+	return game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/'..httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/sstvskids/journey.lol/commits'))[1].sha..'/'..url, true)
+end
+
+loadstring(getURL('loader.lua'))()
 ```
 
 by @stav
