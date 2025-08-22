@@ -281,13 +281,13 @@ function Library:new()
         mobile_button.Parent = container
 
         local MobileScale, mscale = Instance.new("UIScale")
-        MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
-        mscale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
+        mscale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
         MobileScale.Parent = mobile_button
         mobile_button.Size = UDim2.fromScale(122 / workspace.CurrentCamera.ViewportSize.X, 38 / workspace.CurrentCamera.ViewportSize.Y)
 
         workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
-            MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+            MobileScale.Scale = math.max(mobile_button.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
         end)
 
         local UICorner = Instance.new("UICorner")
@@ -309,13 +309,13 @@ function Library:new()
         shadowMobile.ImageTransparency = 0.200
 
         local MobileScale2, mscale2 = Instance.new("UIScale")
-        MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
-        mscale2 = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
+        mscale2 = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
         MobileScale2.Parent = shadowMobile
         shadowMobile.Size = UDim2.fromScale(122 / workspace.CurrentCamera.ViewportSize.X, 38 / workspace.CurrentCamera.ViewportSize.Y)
 
         workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
-            MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+            MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 0.6)
         end)
 
         local State = Instance.new("TextLabel")
