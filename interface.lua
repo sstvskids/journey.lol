@@ -177,6 +177,16 @@ function Library:new()
 	Container.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Container.Size = UDim2.new(0, 699, 0, 426)
 
+    local ContainerScale, scale = Instance.new("UIScale")
+    ContainerScale.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+	scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+	ContainerScale.Parent = Container
+	scalebla.Size = UDim2.fromScale(1 / scale, 1 / scale)
+
+    Container:GetPropertyChangedSignal('AbsoluteSize'):Connect(function()
+        scaledUI.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+    end)
+
 	local ContainerCorner = Instance.new("UICorner")
 	ContainerCorner.CornerRadius = UDim.new(0, 20)
 	ContainerCorner.Parent = container.Container
@@ -454,7 +464,7 @@ function Library:new()
 		TextLabel.BackgroundTransparency = 1.000
 		TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		TextLabel.BorderSizePixel = 0
-		TextLabel.Position = UDim2.new(0.58965224, 0, 0.4999999, 0)
+		TextLabel.Position = UDim2.new(0.58965224, 0, 0.5, 0)
 		TextLabel.Size = UDim2.new(0, 124, 0, 15)
 		TextLabel.ZIndex = 3
 		TextLabel.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
