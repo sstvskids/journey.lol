@@ -109,7 +109,7 @@ run(function()
     })
 end)
 
-local speed
+local speed = 16
 local speedcall
 run(function()
     tabs.Blatant.create_title({
