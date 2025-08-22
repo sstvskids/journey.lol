@@ -303,7 +303,7 @@ function Library:new()
         shadowMobile.BorderColor3 = Color3.fromRGB(0, 0, 0)
         shadowMobile.BorderSizePixel = 0
         shadowMobile.Position = UDim2.new(0.5, 0, 0.5, 0)
-        shadowMobile.Size = UDim2.new(0, 144, 0, 58)
+        --shadowMobile.Size = UDim2.new(0, 144, 0, 58)
         shadowMobile.ZIndex = 0
         shadowMobile.Image = "rbxassetid://17183270335"
         shadowMobile.ImageTransparency = 0.200
