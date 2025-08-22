@@ -3,7 +3,7 @@
     journey.lol
     by @stav
 
-    w-w-wait? a gui-less script!?!
+    Atonium, but undetected ahh script
 ]]
 
 repeat task.wait() until game:isLoaded()
