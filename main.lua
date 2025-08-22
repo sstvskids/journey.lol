@@ -128,7 +128,7 @@ run(function()
             if callback then
                 interface.connections.Speed = runService.PreSimulation:Connect(function()
                     if isAlive(lplr) then
-                        lplr.Character.Humanoid.WalkSpeed = Speed
+                        lplr.Character.Humanoid.WalkSpeed = speed
                     end
                 end)
             else
