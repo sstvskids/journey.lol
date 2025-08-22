@@ -16,7 +16,7 @@ local UserInputService = cloneref(game:GetService('UserInputService'))
 local LocalPlayer = cloneref(game:GetService('Players')).LocalPlayer
 local TweenService = cloneref(game:GetService('TweenService'))
 local HttpService = cloneref(game:GetService('HttpService'))
-local CoreGui = cloneref(game:GetService('CoreGui'))
+local PlayerGui = cloneref(lplr.PlayerGui)
 local Mouse = cloneref(LocalPlayer:GetMouse());
 
 local Library = {
@@ -42,8 +42,8 @@ function Library:disconnect()
 end
 
 function Library:clear()
-	for _, object in CoreGui:GetChildren() do
-		if object.Name ~= "troll" then
+	for _, object in PlayerGui:GetChildren() do
+		if object.Name ~= "journey" then
 			continue
 		end
 	
@@ -149,8 +149,8 @@ end
 
 function Library:new()
 	local container = Instance.new("ScreenGui")
-	container.Name = "troll"
-    container.Parent = CoreGui
+	container.Name = 'journey'
+    container.Parent = PlayerGui
 
     Library.core = container
 
