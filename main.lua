@@ -28,7 +28,11 @@ local interface = loadstring(getURL('interface.lua'))()
 local Notifications = loadstring(getURL('notif.lua'))()
 
 local function isAlive(v)
-    return (v.Character and v.Character.Humanoid and v.Character.PrimaryPart and v.Character.Humanoid.Health > 0) and true or false
+    if v.Character and v.Character:FindFirstChild('Humanoid') and v.Character:FindFirstChild('HumanoidRootPart') and v.Character.Humanoid.Health > 0 then
+        return true
+    end
+
+    return false
 end
 
 local function getPart(v)
