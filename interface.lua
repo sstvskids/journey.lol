@@ -155,6 +155,7 @@ function Library:new()
 	local container = Instance.new("ScreenGui")
 	container.Name = 'journey'
     container.Parent = PlayerGui
+    container.ResetOnSpawn = false
 
     Library.core = container
 
