@@ -32,10 +32,10 @@ local Library = {
 }
 
 function Library:disconnect()
-	for _, value in Library.connections do
+	for i, value in Library.connections do
         if value then
 		    value:Disconnect()
-		    Library.connections[_] = nil
+		    Library.connections[i] = nil
         end
 	end
 end
