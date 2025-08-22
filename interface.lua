@@ -34,6 +34,7 @@ local Library = {
 function Library:disconnect()
 	for _, value in Library.connections do
         print(type(value)..' d')
+        print(type(_)..' d')
 		if type(value) ~= 'RBXScriptConnection' then
             print(type(value))
 			continue
