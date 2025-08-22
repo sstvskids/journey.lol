@@ -199,17 +199,18 @@ function Library:new()
 	Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Logo.BorderSizePixel = 0
 	Logo.Position = UDim2.new(0.0387367606, 0, 0.5, 0)
+	Logo.Size = UDim2.new(0, 30, 0, 25)
 	Logo.Image = ""
 
-    local LogoScale, scale = Instance.new("UIScale")
+    --[[local LogoScale, scale = Instance.new("UIScale")
     LogoScale.Scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	LogoScale.Parent = Logo
-    Logo.Size = UDim2.fromScale(30 / workspace.CurrentCamera.ViewportSize.X, 26 / workspace.CurrentCamera.ViewportSize.Y)
+    Logo.Size = UDim2.fromScale(30 / workspace.CurrentCamera.ViewportSize.X, 25 / workspace.CurrentCamera.ViewportSize.Y)
 
     workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
         LogoScale.Scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
-    end)
+    end)]]
 	
 	local TextLabel = Instance.new("TextLabel")
 	TextLabel.Parent = Top
