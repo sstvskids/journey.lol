@@ -83,7 +83,9 @@ Library.clear()
 function Library:open()
 	self.Container.Visible = true
 	self.Shadow.Visible = true
-	self.Mobile.Modal = true
+    if UserInputService.TouchEnabled then
+	    self.Mobile.Modal = true
+    end
 
 	TweenService:Create(self.Container, TweenInfo.new(0.6, Enum.EasingStyle.Circular, Enum.EasingDirection.InOut), {
 		Size = UDim2.new(0, 699, 0, 426)
@@ -111,7 +113,10 @@ function Library:close()
 
 		self.Container.Visible = false
 		self.Shadow.Visible = false
-		self.Mobile.Modal = false
+        
+        if UserInputService.TouchEnabled then
+		    self.Mobile.Modal = false
+        end
 	end)
 end
 
