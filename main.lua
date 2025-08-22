@@ -125,6 +125,7 @@ run(function()
         enabled = false,
 
         callback = function(callback)
+            speedcall = callback
             if callback then
                 interface.connections.Speed = runService.PreSimulation:Connect(function()
                     if isAlive(lplr) then
@@ -150,7 +151,7 @@ run(function()
         maximum_value = 100,
 
         callback = function(value)
-            speedcall = value
+            speed = value
         end
     })
 end)
