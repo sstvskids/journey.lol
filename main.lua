@@ -36,10 +36,6 @@ local function isAlive(v)
 end
 
 local function getPart(v)
-    if v:IsA('MeshPart') or v:IsA('BasePart') or v:IsA('Part') then
-        return v.PrimaryPart
-    end
-    
     if isAlive(v) then
         return v.Character.PrimaryPart
     end
@@ -181,7 +177,7 @@ run(function()
             if callback then
                 interface.connections.Grace = runService.PreSimulation:Connect(function()
                     if isAlive(lplr) then
-                        getPart(lplr).CFrame = getPart(workspace.JacobLadder.PhysicalSetup.Stand).CFrame + Vector3.new(0, 1, 0)
+                        getPart(lplr).CFrame = workspace.JacobLadder.PhysicalSetup.Stand.CFrame + Vector3.new(0, 1, 0)
                     end
                 end)
             else
