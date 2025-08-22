@@ -166,7 +166,6 @@ run(function()
         section = 'right'
     })
 
-    local offset = 1
     tabs.Blatant.create_toggle({
         name = 'DoubleGrace',
         flag = 'grace',
@@ -186,20 +185,6 @@ run(function()
                     interface.connections.Grace:Disconnect()
                 end
             end
-        end
-    })
-    tabs.Settings.create_slider({
-        name = 'YOffset',
-        flag = 'yoffset',
-
-        section = 'right',
-
-        value = 2,
-        minimum_value = 0,
-        maximum_value = 5,
-
-        callback = function(value)
-            offset = value
         end
     })
 end)
