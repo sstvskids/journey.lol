@@ -445,7 +445,7 @@ function Library:new()
 		tab.Parent = tabs
 
 		local tabCorner = Instance.new("UICorner")
-		tabCorner.CornerRadius = UDim.new(0, 5)
+		tabCorner.CornerRadius = UDim.new(0, 10)
 		tabCorner.Parent = tab
 
 		local TextLabel = Instance.new("TextLabel")
