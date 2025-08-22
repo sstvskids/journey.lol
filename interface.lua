@@ -308,6 +308,16 @@ function Library:new()
         shadowMobile.Image = "rbxassetid://17183270335"
         shadowMobile.ImageTransparency = 0.200
 
+        local MobileScale2, mscale2 = Instance.new("UIScale")
+        MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        mscale2 = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        MobileScale2.Parent = shadowMobile
+        shadowMobile.Size = UDim2.fromScale(122 / workspace.CurrentCamera.ViewportSize.X, 38 / workspace.CurrentCamera.ViewportSize.Y)
+
+        workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+            MobileScale2.Scale = math.max(shadowMobile.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
+        end)
+
         local State = Instance.new("TextLabel")
         State.Name = "State"
         State.Parent = mobile_button
