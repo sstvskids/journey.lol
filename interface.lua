@@ -33,7 +33,7 @@ local Library = {
 
 function Library:disconnect()
 	for _, value in Library.connections do
-		if not Library.connections[value] then
+		if Library.connections[value] == nil then
 			continue
 		end
 
