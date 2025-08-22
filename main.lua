@@ -118,15 +118,59 @@ end)
 
 run(function()
     tabs.Settings.create_title({
-        name = 'Uninject',
+        name = 'FPS',
         section = 'left'
+    })
+
+    local fps
+    local fpscall
+    tabs.Settings.create_toggle({
+        name = 'NoFPSLimit',
+        flag = 'nofpslimit',
+
+        section = 'left',
+        enabled = false,
+
+        callback = function(callback)
+            fpscall = callback
+            if callback then
+                local old = getfpscap and getfpscap() or 60
+                setfpscap(9999)
+            else
+                setfpscap(old)
+            end
+        end
+    })
+    tabs.Settings.create_slider({
+        name = 'FPS',
+        flag = 'fpsslider',
+
+        section = 'left',
+
+        value = 999,
+        minimum_value = 60,
+        maximum_value = 999,
+
+        callback = function(value)
+            fps = value
+            if fpscall then
+                setfpscap(value)
+            end
+        end
+    })
+end)
+
+run(function()
+    tabs.Settings.create_title({
+        name = 'Uninject',
+        section = 'right'
     })
 
     tabs.Settings.create_toggle({
         name = 'Uninject',
         flag = 'uninject',
 
-        section = 'left',
+        section = 'right',
         enabled = false,
 
         callback = function(callback)
