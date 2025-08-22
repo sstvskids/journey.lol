@@ -24,4 +24,14 @@ local function getURL(url)
 	return game:HttpGet('https://raw.githubusercontent.com/sstvskids/journey.lol/'..httpService:JSONDecode(game:HttpGet('https://api.github.com/repos/sstvskids/journey.lol/commits'))[1].sha..'/'..url, true)
 end
 
-return loadstring(getURL('main.lua'))()
+local games = {
+    [17813692689] = 'games/17813692689.lua'
+}
+
+for i,v in games do
+    if i == game.PlaceId then
+        return loadstring(getURL(v))()
+    end
+end
+
+return loadstring(getURL('games/universal.lua'))()
