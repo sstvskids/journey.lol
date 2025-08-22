@@ -35,11 +35,15 @@ local function getPart(v)
     if isAlive(v) then
         return v.Character.PrimaryPart
     end
+
+    if v:IsA('MeshPart') or v:IsA('BasePart') or v:IsA('Part') then
+        return v.PrimaryPart
+    end
 end
 
 local main = interface.new()
 local tabs = {
-    Combat = main.create_tab('Main'),
+    Combat = main.create_tab('Combat'),
     Blatant = main.create_tab('Blatant'),
     Render = main.create_tab('Render'),
     Settings = main.create_tab('Settings')
@@ -152,6 +156,35 @@ run(function()
 
         callback = function(value)
             speed = value
+        end
+    })
+end)
+
+run(function()
+    tabs.Blatant.create_title({
+        name = 'Grace',
+        section = 'right'
+    })
+
+    tabs.Blatant.create_toggle({
+        name = 'DoubleGrace',
+        flag = 'grace',
+
+        section = 'right',
+        enabled = false,
+
+        callback = function(callback)
+            if callback then
+                interface.connections.Grace = runService.PreSimulation:Connect(function()
+                    if isAlive(lplr) then
+                        getPart(lplr).CFrame = getPart(workspace.JacobLadder.PhysicalSetup.Stand).CFrame + Vector3.new(0, 1, 0)
+                    end
+                end)
+            else
+                if interface.connections.Grace then
+                    interface.connections.Grace:Disconnect()
+                end
+            end
         end
     })
 end)
