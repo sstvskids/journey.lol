@@ -26,13 +26,6 @@ end
 
 local interface = loadstring(getURL('interface.lua'))()
 local Notifications = loadstring(getURL('notif.lua'))()
-shared.notifications = Notifications
-
-local savetog, lastsave = true, os.clock()
-
-if not shared.connections or not type(shared.connections) == 'table' then
-    shared.connections = {}
-end
 
 local function isAlive(v)
     return (v.Character and v.Character.Humanoid and v.Character.PrimaryPart and v.Character.Humanoid.Health > 0) and true or false
@@ -112,6 +105,51 @@ run(function()
         enabled = false,
         callback = function(callback)
             TPAura = callback
+        end
+    })
+end)
+
+local speed
+local speedcall
+run(function()
+    tabs.Blatant.create_title({
+        name = 'Speed',
+        section = 'left'
+    })
+
+    tabs.Blatant.create_toggle({
+        name = 'Speed',
+        flag = 'speed',
+
+        section = 'left',
+        enabled = false,
+
+        callback = function(callback)
+            if callback then
+                interface.connections.Speed = runService.PreSimulation:Connect(function()
+                    if isAlive(lplr) then
+                        lplr.Character.Humanoid.WalkSpeed = Speed
+                    end
+                end)
+            else
+                if interface.connections.Speed then
+                    interface.connections.Speed:Disconnect()
+                end
+            end
+        end
+    })
+    tabs.Blatant.create_slider({
+        name = 'Speed',
+        flag = 'speedslider',
+
+        section = 'left',
+
+        value = 35,
+        minimum_value = 16,
+        maximum_value = 100,
+
+        callback = function(value)
+            speedcall = value
         end
     })
 end)
