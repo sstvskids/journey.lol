@@ -161,9 +161,8 @@ run(function()
         section = 'left'
     })
 
-    local fps
+    local fps = 60
     local fpscall
-    local old = 60
     tabs.Settings.create_toggle({
         name = 'NoFPSLimit',
         flag = 'nofpslimit',
