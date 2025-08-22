@@ -271,7 +271,7 @@ function Library:new()
         mobile_button.BorderColor3 = Color3.fromRGB(0, 0, 0)
         mobile_button.BorderSizePixel = 0
         mobile_button.Position = UDim2.new(0.0210955422, 0, 0.91790241, 0)
-        mobile_button.Size = UDim2.new(0, 122, 0, 38)
+        --mobile_button.Size = UDim2.new(0, 122, 0, 38)
         mobile_button.AutoButtonColor = false
         mobile_button.Modal = true
         mobile_button.FontFace = Font.new("rbxasset://fonts/families/Montserrat.json", Enum.FontWeight.SemiBold)
