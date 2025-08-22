@@ -175,13 +175,12 @@ function Library:new()
 	Container.BorderSizePixel = 0
 	Container.ClipsDescendants = true
 	Container.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Container.Size = UDim2.new(0, 699, 0, 426)
 
     local ContainerScale, scale = Instance.new("UIScale")
     ContainerScale.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	ContainerScale.Parent = Container
-	scalebla.Size = UDim2.fromScale(1 / scale, 1 / scale)
+	Container.Size = UDim2.fromScale(1 / scale, 1 / scale)
 
     Container:GetPropertyChangedSignal('AbsoluteSize'):Connect(function()
         scaledUI.Scale = math.max(Container.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
