@@ -174,6 +174,7 @@ function Library:new()
 	Container.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Container.BorderSizePixel = 0
 	Container.ClipsDescendants = true
+    Container.Size = UDim2.new(0, 699, 0, 426)
 	Container.Position = UDim2.new(0.5, 0, 0.5, 0)
 
 	local ContainerCorner = Instance.new("UICorner")
@@ -202,7 +203,7 @@ function Library:new()
 	Logo.Size = UDim2.new(0, 30, 0, 25)
 	Logo.Image = ""
 
-    --[[local LogoScale, scale = Instance.new("UIScale")
+    local LogoScale, scale = Instance.new("UIScale")
     LogoScale.Scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
 	LogoScale.Parent = Logo
@@ -210,7 +211,7 @@ function Library:new()
 
     workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(function()
         LogoScale.Scale = math.max(Logo.AbsoluteSize.X / workspace.CurrentCamera.ViewportSize.X, 1)
-    end)]]
+    end)
 	
 	local TextLabel = Instance.new("TextLabel")
 	TextLabel.Parent = Top
