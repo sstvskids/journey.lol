@@ -131,10 +131,10 @@ run(function()
 
         callback = function(callback)
             if callback then
-                local nouninj = HttpService:JSONDecode(readfile(`journey.lol/{game.GameId}.lua`))
+                local nouninj = httpService:JSONDecode(readfile(`journey.lol/{game.GameId}.lua`))
                 nouninj["uninject"] = false
-                writefile(`journey.lol/{game.GameId}.lua`, HttpService:JSONEncode(nouninj))
-                
+                writefile(`journey.lol/{game.GameId}.lua`, httpService:JSONEncode(nouninj))
+
                 Notifications.NewNotification(lplr, 'uninjected', 2, Color3.fromRGB(255,255,255), 'Yay!')
                 interface:uninject()
             end
