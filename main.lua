@@ -131,10 +131,9 @@ run(function()
 
         callback = function(callback)
             if callback then
-                local nouninj = httpService:JSONDecode(readfile(`journey.lol/{game.GameId}.lua`))
-                nouninj["uninject"] = false
-                writefile(`journey.lol/{game.GameId}.lua`, httpService:JSONEncode(nouninj))
-
+                interface.Flags['uninject'] = false
+				interface.save_flags()
+                task.wait(0.5)
                 Notifications.NewNotification(lplr, 'uninjected', 2, Color3.fromRGB(255,255,255), 'Yay!')
                 interface:uninject()
             end
