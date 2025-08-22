@@ -174,10 +174,9 @@ run(function()
         callback = function(callback)
             fpscall = callback
             if callback then
-                old = getfpscap and getfpscap() or 60
                 setfpscap(fps)
             else
-                setfpscap(old)
+                setfpscap(60)
             end
         end
     })
