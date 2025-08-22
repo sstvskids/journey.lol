@@ -124,6 +124,7 @@ run(function()
 
     local fps
     local fpscall
+    local old = 60
     tabs.Settings.create_toggle({
         name = 'NoFPSLimit',
         flag = 'nofpslimit',
@@ -135,7 +136,7 @@ run(function()
             fpscall = callback
             if callback then
                 local old = getfpscap and getfpscap() or 60
-                setfpscap(9999)
+                setfpscap(fps)
             else
                 setfpscap(old)
             end
