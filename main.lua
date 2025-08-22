@@ -135,6 +135,7 @@ run(function()
                 if interface.connections.Speed then
                     interface.connections.Speed:Disconnect()
                 end
+                lplr.Character.Humanoid.WalkSpeed = 16
             end
         end
     })
