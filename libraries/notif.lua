@@ -1,10 +1,35 @@
---[[
+if game.PlaceId ~= 17813692689 then
+    return {
+        NewNotification = function(title, txt, dur, buttons)
+            local starterGui = cloneref(game:GetService('StarterGui'))
+            local packet = {
+                Title = title,
+                Text = txt,
+                Duration = dur
+            }
 
-    journey.lol
-    by @stav
+            for i,v in buttons do
+                packet[i] = v
+            end
 
-    Atonium, but undetected ahh script
-]]
+            starterGui:SetCore('SendNotification', packet)
+        end
+    }
+
+    --[[
+        Usage:
+
+        Notif.NewNotification('journey.lol', 'test', 5, {
+            Callback = function(callback)
+                if callback then
+                    print(callback)
+                end
+            end,
+            Button1 = 'Accept',
+            Button2 = 'Decline'
+        })
+    ]]
+end
 
 local cloneref = cloneref or function(obj)
     return obj
