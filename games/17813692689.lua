@@ -121,15 +121,15 @@ run(function()
     })
 end)
 
-local speed = 16
-local speedcall
 run(function()
+    local Speed
+    local Value
     tabs.Blatant.create_title({
         name = 'Speed',
         section = 'left'
     })
 
-    tabs.Blatant.create_toggle({
+    Speed = tabs.Blatant.create_toggle({
         name = 'Speed',
         flag = 'speed',
 
@@ -137,11 +137,10 @@ run(function()
         enabled = false,
 
         callback = function(callback)
-            speedcall = callback
             if callback then
                 interface.connections.Speed = runService.PreSimulation:Connect(function()
                     if isAlive(lplr) then
-                        lplr.Character.Humanoid.WalkSpeed = speed
+                        lplr.Character.Humanoid.WalkSpeed = Value.value
                     end
                 end)
             else
@@ -152,7 +151,7 @@ run(function()
             end
         end
     })
-    tabs.Blatant.create_slider({
+    Value = tabs.Blatant.create_slider({
         name = 'Speed',
         flag = 'speedslider',
 
@@ -160,11 +159,7 @@ run(function()
 
         value = 35,
         minimum_value = 16,
-        maximum_value = 100,
-
-        callback = function(value)
-            speed = value
-        end
+        maximum_value = 100
     })
 end)
 
